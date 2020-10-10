@@ -1,0 +1,2 @@
+C:\Users\Owner\source\repos\TP-waterpark\waterparkmain\Debug\waterparkmain.exe
+C:\Users\Owner\source\repos\TP-waterpark\waterparkmain\Debug\waterparkmain.pdb
