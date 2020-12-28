@@ -1,0 +1,65 @@
+// code by BAESEOEUN
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Monster : public Base {
+public:
+	double def;
+    double damage;
+	int rewards;
+public:
+	Monster(double def,int rewards) : def (def),rewards(rewards) {
+		cout << "몬스터가 나타났습니다." << endl;
+	}
+	void underattack(character& character) {                           //공격반복+돈받기
+		cout << "공격을 시작합니다." << endl;
+		for (; Monster::HP > 0;) {
+			damage = (character.att) * def;
+			Monster::HP = Monster::HP - damage;
+			cout << Monster::HP << "남았습니다." << endl;
+		}
+		cout << "몬스터를 처치했습니다" << endl;
+		money += rewards;
+		cout << rewards << " 를 얻었습니다." << endl;
+		
+	}
+ 
+};
+
+
+
+class Boss : public Monster {
+private:
+	int count;                                                            //특징10회에 한번 damage=0
+public:
+	Boss(double def,int rewards) : Monster(def, rewards) {
+		cout << "보스 몬스터가 나타났습니다." << endl;
+	}
+	void underattack(character& character) {      
+		cout << "보스 몬스터 공격을 시작합니다." << endl;                    //공격반복+돈받기
+		for (count=0; Boss::HP > 0;count++) {
+			if (count % 10 == 0) { damage = 0; }
+			else {
+				damage = (character.att) * def;
+				Boss::HP = Boss::HP - damage;
+				cout << Boss::HP << " 남았습니다." << endl;
+			}
+		}
+		    cout << "몬스터를 처치했습니다" << endl;
+			money += rewards;
+			cout << rewards << " 를 얻었습니다." << endl;
+	}
+};
+
+int main(void) {                                 
+	character A;
+	Monster A1(0.8,100);
+	Boss B1(2.5, 1000);
+	A1.underattack(A);
+	B1.underattack(A);
+	return 0;
+	
+}
