@@ -1,0 +1,27 @@
+//문자열 입력후에 숫자만 추출하기
+//추출한 숫자의 약수개수 
+
+#include <stdio.h>
+using namespace std;
+
+int main() {
+	char string[100]; //문자열
+	int res=0;   //숫자
+	int i = 0;
+	int num=0;
+	scanf("%s", &string);
+	for ( i = 0; string[i]!='\0'; i++) {
+		if (string[i] >= 48 && string[i] <= 57) {
+			res = res * 10 + (string[i] - 48);
+		}
+	
+	}
+	printf("%d\n", res);
+	for (i = 1; i <= res; i++) {
+		if (res % i == 0) {
+			num++;
+		}
+	}
+	printf("%d\n", num);
+	return 0;
+}
